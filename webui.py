@@ -72,7 +72,7 @@ def install_dependencies():
         sys.exit()
 
     # Clone webui to our computer
-    run_cmd("git clone https://github.com/JulianVolodia/oobabooga_text-generation-webui.git", assert_success=True, environment=True)
+    run_cmd("git clone https://github.com/JulianVolodia/oobabooga_text-generation-webui.git text-generation-webui", assert_success=True, environment=True)
     if sys.platform.startswith("win"):
         # Fix a bitsandbytes compatibility issue with Windows
         run_cmd("python -m pip install https://github.com/jllllll/bitsandbytes-windows-webui/raw/main/bitsandbytes-0.38.1-py3-none-any.whl", assert_success=True, environment=True)
