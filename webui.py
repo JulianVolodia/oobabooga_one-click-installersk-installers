@@ -60,7 +60,8 @@ def install_dependencies():
 
     # Install the version of PyTorch needed
     if gpuchoice == "a":
-        run_cmd("conda install -y -k pytorch[version=2,build=py3.10_cuda11.7*] torchvision torchaudio pytorch-cuda=11.7 cuda-toolkit ninja git -c pytorch -c nvidia/label/cuda-11.7.0 -c nvidia", assert_success=True, environment=True)
+        #run_cmd("conda install -y -k pytorch[version=2,build=py3.10_cuda11.7*] torchvision torchaudio pytorch-cuda=11.7 cuda-toolkit ninja git -c pytorch -c nvidia/label/cuda-11.7.0 -c nvidia", assert_success=True, environment=True)
+        run_cmd("conda install -y -k pytorch torchvision torchaudio pytorch-cuda=12.1 cuda-toolkit ninja git -c pytorch-nightly -c nvidia", assert_success=True, environment=True)
     elif gpuchoice == "b":
         print("AMD GPUs are not supported. Exiting...")
         sys.exit()
@@ -71,7 +72,7 @@ def install_dependencies():
         sys.exit()
 
     # Clone webui to our computer
-    run_cmd("git clone https://github.com/oobabooga/text-generation-webui.git", assert_success=True, environment=True)
+    run_cmd("git clone https://github.com/JulianVolodia/oobabooga_text-generation-webui.git", assert_success=True, environment=True)
     if sys.platform.startswith("win"):
         # Fix a bitsandbytes compatibility issue with Windows
         run_cmd("python -m pip install https://github.com/jllllll/bitsandbytes-windows-webui/raw/main/bitsandbytes-0.38.1-py3-none-any.whl", assert_success=True, environment=True)
